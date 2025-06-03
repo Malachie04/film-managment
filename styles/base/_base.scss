@@ -1,0 +1,116 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.container{
+    padding: 40px 30px;
+}
+.container-bottom{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    gap: 1rem;
+    position: relative;
+    padding: 15PX 0;
+    h2{
+        font-size: 1.5rem;
+        font-weight: normal;
+    }
+}
+.card{
+    grid-column: span 3;
+    position: relative;
+     overflow: hidden;
+     display:flex;
+     flex-direction: column;
+     cursor: pointer;
+}
+
+.popularity {
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 37, 63, 0.8),
+    rgba(30, 58, 95, 0.8)
+  );
+  
+  opacity: 0;          
+  transition: opacity 0.3s ease;
+  pointer-events: none; 
+  z-index: 1;           
+}
+
+.card:hover .popularity {
+  opacity: 1;           /* visible au survol */
+  pointer-events: auto; /* interactif */
+}
+
+/* Pour que le titre soit au-dessus */
+.title {
+  position: relative;
+  z-index: 10;
+}
+
+.title{
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+button{
+    padding: 10px 30px;
+    border: 2px solid #0d253f;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.active{
+    background-color: #0d253f;
+    color: #fff;
+}
+
+.popup{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    height: 90vh;
+    width: 90vw;
+    gap: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1000;
+    .popupimage{
+        width: 40%;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .popupInfos{
+        width: 50%;
+    }
+    .close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .overview{
+        padding: 15px;
+    }
+    .title{
+        padding-top: 25px;
+    }
+}
