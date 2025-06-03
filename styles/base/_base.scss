@@ -114,3 +114,23 @@ button{
         padding-top: 25px;
     }
 }
+
+.ouvrirpage{
+    background-color: #0d253f;
+    color: red;
+}
+
+.container-info{
+    padding: 15px;
+}
+.Retour{
+   background-color: #0d253f;
+    color: rgb(251, 251, 251); 
+    padding: 10px 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.details-serie{
+    display: flex;
+    gap: 1rem;
+}
