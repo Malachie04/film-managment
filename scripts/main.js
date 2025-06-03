@@ -140,6 +140,6 @@ ouvrirpageHTML.addEventListener('click', (event) => {
     localStorage.setItem('selectedId', idElement);
     
     // j'ouvre la nouvelle page
-    window.location.href = '/serieinfo.html';
+    window.location.href = 'serieinfo.html';
   }
 });
