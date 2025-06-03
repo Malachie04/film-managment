@@ -5,6 +5,8 @@ let filmdetail ='';
 let imgUrl="https://image.tmdb.org/t/p/w500";
 let idElement='';
 let cardInfo='';
+let currentPage=1;
+let currentCategorie='top_rated';
 //Object
 // const swipeHtml=document.querySelector('.swiper-wrapper');
 // const buttontHtml=document.querySelector('button');
@@ -17,18 +19,31 @@ const titreserieHTML=document.querySelector('.title-de-la-serie');
 const overviewHtml=document.querySelector('.overview');
 const popupHTML=document.querySelector('.popup');
 const ouvrirpageHTML=document.querySelector('.ouvrirpage');
+const nextAndprevHTML=document.querySelector('.nextPrev');
+const paginationHTML=document.querySelector('.pageDetail');
 // const valueInput=document.querySelector('.input-text');
 //Function
 
 
+// async function getSeriey(list) {
+//     url=`https://api.themoviedb.org/3/tv/${list}?api_key=${apikey}`;
+//     try {
+//         let data=await fetch(url);
+//         let result = await data.json();
+//         console.log(result);
+//     } catch (error) {
+//         console(error);
+//     }
+// }
 
+// getSeriey('top_rated');
 
 // dispalay();
 
-displayAll('top_rated');
+displayAll(currentCategorie);
 
-async function getSeriesByList(list) {
-    url=`https://api.themoviedb.org/3/tv/${list}?api_key=${apikey}&language=fr-FR&page=1`;
+async function getSeriesByList(list,page) {
+    url=`https://api.themoviedb.org/3/tv/${list}?api_key=${apikey}&language=fr-FR&page=${page}`;
     try {
         let data=await fetch(url);
         let result = await data.json();
@@ -41,16 +56,23 @@ async function getSeriesByList(list) {
 async function displayAll(categoy) {
     localStorage.clear();
     wrapperFimlHTML.innerHTML=``;
-    let result = await getSeriesByList(categoy);
+    let result = await getSeriesByList(categoy,currentPage);
     let myrest = result.results;
     let fimlHTML;
+
+    console.log(myrest);
+    
+    paginationHTML.innerHTML=`Page ${result.page} sur ${result.total_pages}`;
+    // console.log(result.total_pages);
+    
 
     myrest.forEach(serie => {
         const filmdetail = [
             serie.name,        
             `${imgUrl}${serie.poster_path}`,
             serie.popularity,
-            serie.overview
+            serie.overview,
+            serie.first_air_date,
         ];
         localStorage.setItem(serie.id, JSON.stringify(filmdetail));
     });
@@ -68,16 +90,9 @@ async function displayAll(categoy) {
 }
 
 
-
-
-
 buttons.addEventListener('click', (event) => {
     const elementClicked = event.target;
-
-   
     if (elementClicked.tagName !== 'BUTTON') return;
-
-   
     const allButtons = buttons.querySelectorAll('button');
     allButtons.forEach(btn => btn.classList.remove('active'));
 
@@ -87,10 +102,42 @@ buttons.addEventListener('click', (event) => {
    
     const nomClasse = elementClicked.className.replace('active', '').trim();
 
+    currentCategorie=nomClasse;
+    currentPage=1;
     if (nomClasse) {
-        displayAll(nomClasse); 
+        displayAll(currentCategorie); 
     }
 });
+
+nextAndprevHTML.addEventListener('click', (event) => {
+    event.preventDefault();
+    const clickedButton = event.target.closest('button'); 
+
+    if (!clickedButton) return;
+
+    if (clickedButton.classList.contains('next')) {
+        currentPage++;
+    } else if (clickedButton.classList.contains('previous')) {
+        if (currentPage > 1) {
+            currentPage--;
+        }
+    }
+
+    
+    // const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.previous');
+
+    if (currentPage <= 1) {
+        prevButton.style.opacity = '0';
+        prevButton.disabled = true;
+    } else {
+        prevButton.style.opacity = '1';
+        prevButton.disabled = false;
+    }
+
+    displayAll(currentCategorie); 
+});
+
 
 
 wrapperFimlHTML.addEventListener('click', (event) => {
@@ -140,6 +187,6 @@ ouvrirpageHTML.addEventListener('click', (event) => {
     localStorage.setItem('selectedId', idElement);
     
     // j'ouvre la nouvelle page
-    window.location.href = 'serieinfo.html';
+    window.location.href = '../serieinfo.html';
   }
 });

@@ -71,6 +71,10 @@ button{
     border: 2px solid #0d253f;
     border-radius: 5px;
     cursor: pointer;
+    &:hover{
+        background-color:#0d253f ;
+        color: #fff;
+    }
 }
 .active{
     background-color: #0d253f;
@@ -90,9 +94,11 @@ button{
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     z-index: 1000;
+    transition: all 3sec ease-in-out;
     .popupimage{
         width: 40%;
         img{
+            transition: all 3sec ease-in-out;
             height: 100%;
             width: 100%;
         }
@@ -137,4 +143,20 @@ button{
     display: flex;
     gap: 1rem;
    
+}
+
+.nextPrev{
+    display: flex;
+    justify-content: space-between;
+}
+
+.previous{
+    opacity: 0;
+}
+
+.pageDetail{
+    padding-top: 25px;
+    font-size: 1.5rem;
+    color: maroon;
+    font-weight: bold;
 }
