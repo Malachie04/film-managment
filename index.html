@@ -6,9 +6,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles/styles.min.css">
     <title>Index</title>
-    <script src="./scripts/main.js" defer></script>
+
+
+    <!-- map -->
+      <!-- CSS obligatoire de Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+  <!-- <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 500px; height: 500px; }
+  </style> -->
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AYcRzI9y6Jnlb9tQ79jSO1v6D9Ug_39hcaVn1G9JxBn0u_uFyidG13DMkEHfiEamlip-ZAJDiQmvEKYa&currency=EUR"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer>
+    </script>
+    <!-- <script src="./scripts/main.js" defer></script> -->
 </head>
 <body>
+    <div id="map"></div>
+    <!-- <div id="paypal-button-container"> -->
+        
+    </div>
     <div class="container">
         <div class="container-top">
             <div class="title-site">
@@ -53,5 +73,23 @@
             </div>
         </div>
     </div>
+
+
+    <!-- JS obligatoire de Mapbox -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+
+
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "kuWpXTdBnTFcf5jxt",
+            });
+        })();
+    </script>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>

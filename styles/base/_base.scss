@@ -9,6 +9,8 @@ body{
 .container{
     padding: 40px 30px;
     position: relative;
+    width: 1300px;
+    margin: auto;
 }
 
 .title-site{
@@ -48,8 +50,9 @@ body{
     vertical-align: bottom;
     // height: 100%;
     img{
-       height: 511px;
-       width:341px;
+       height: 100%;
+       width:100%;
+       object-fit: cover;
     }
 }
 
