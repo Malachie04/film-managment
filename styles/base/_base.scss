@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&display=swap');
+
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -6,7 +8,19 @@ body{
 
 .container{
     padding: 40px 30px;
+    position: relative;
 }
+
+.title-site{
+     font-family: "Matemasie", sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: maroon;
+}
+
+
+
 .container-bottom{
     display: grid;
     grid-template-columns: repeat(12,1fr);
@@ -14,17 +28,29 @@ body{
     position: relative;
     padding: 15PX 0;
     h2{
+        display: block;
         font-size: 1.5rem;
         font-weight: normal;
+        position: relative;
+        z-index: 10;  
+        background-color: #fff;
     }
 }
 .card{
     grid-column: span 3;
     position: relative;
-     overflow: hidden;
      display:flex;
      flex-direction: column;
+      z-index: 1;
      cursor: pointer;
+    // justify-content: space-around;
+    // background-color: red;
+    vertical-align: bottom;
+    // height: 100%;
+    img{
+       height: 511px;
+       width:341px;
+    }
 }
 
 .popularity {
@@ -32,18 +58,22 @@ body{
   position: absolute;
   bottom: 0;
   right: 0;
+  overflow: hidden;
   color: #fff;
   width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(13, 37, 63, 0.8),
-    rgba(30, 58, 95, 0.8)
-  );
-  
+  height: 100%;
+  z-index: 0;
+  background: radial-gradient(circle,rgba(63, 94, 251, 0.1) 0%, rgba(252, 70, 107, 1) 100%);
   opacity: 0;          
   transition: opacity 0.3s ease;
   pointer-events: none; 
-  z-index: 1;           
+  z-index: 1;   
+  span{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-weight: bold;
+  }        
 }
 
 .card:hover .popularity {
@@ -71,6 +101,7 @@ button{
     border: 2px solid #0d253f;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.4s ease-in-out;
     &:hover{
         background-color:#0d253f ;
         color: #fff;
@@ -148,6 +179,19 @@ button{
 .nextPrev{
     display: flex;
     justify-content: space-between;
+    
+    button{
+        padding: 0 25px;
+        border-color: maroon;
+        &:hover{
+            background-color: maroon;
+            color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+        }
+        i{
+            margin: 0;
+        }
+    }
 }
 
 .previous{
@@ -155,7 +199,7 @@ button{
 }
 
 .pageDetail{
-    padding-top: 25px;
+    // padding-top: 25px;
     font-size: 1.5rem;
     color: maroon;
     font-weight: bold;

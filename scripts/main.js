@@ -79,7 +79,7 @@ async function displayAll(categoy) {
     for(let film of myrest){
         fimlHTML=`
             <div class="card" data-id=${film.id}>
-                <h2 class="title">${film.original_name}</h2>
+                <h2 class="title">${film.name}</h2>
                 <img src="${imgUrl}${film.poster_path}" alt="image">
                 <div class="popularity"><span>${film.popularity}</span></div>
             </div>
